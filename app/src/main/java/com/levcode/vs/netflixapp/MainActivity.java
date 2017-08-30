@@ -1,11 +1,13 @@
 package com.levcode.vs.netflixapp;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -121,6 +123,41 @@ public class MainActivity extends AppCompatActivity {
                     arrLst2.add(rating);
                     arrLst3.add(poster);
                 }
+
+                text = txtSearch.getText().toString();
+                for (int j = 0; j < n; j++) {
+                    if (text.equalsIgnoreCase(arrLst0.get(j))) {
+                        ushow_title = arrLst0.get(j);
+                        urelease_year = arrLst1.get(j);
+                        urating = arrLst2.get(j);
+                        uposter = arrLst3.get(j);
+
+                        arrLst4.add(ushow_title);
+                        arrLst5.add(urelease_year);
+                        arrLst6.add(urating);
+                        arrLst7.add(uposter);
+
+                        Intent intent = new Intent(MainActivity.this, SearchActivity.class);
+                        intent.putStringArrayListExtra("aname", arrLst3);
+                        intent.putStringArrayListExtra("aprice", arrLst4);
+                        intent.putStringArrayListExtra("aimg_url", arrLst5);
+
+                        startActivity(intent);
+
+
+                    } else {
+                        Toast.makeText(getApplicationContext(), "No match found", Toast.LENGTH_SHORT).show();
+                    }
+//			else if(!(text.equalsIgnoreCase(arrLst0.get(j))))
+//			{
+//				Toast.makeText(getApplicationContext(), "No match found", 3000).show();
+//				break;
+//			}
+                }
+
+//	}
+//});
+
             } catch (JSONException e) {
                 e.printStackTrace();
             }
