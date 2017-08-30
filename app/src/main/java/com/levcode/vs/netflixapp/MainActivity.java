@@ -10,6 +10,13 @@ import android.widget.EditText;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -55,12 +62,29 @@ class Search extends AsyncTask <String, String, String> {
     ArrayList<String> arrLst7 = new ArrayList<String>();
     @Override
     protected String doInBackground(String... strings) {
-        return null;
+        URL url = null;
+        try {
+            url = new URL("http://netflixroulette.net/api/api.php?actor=Nicolas%20Cage");
+            HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+            InputStream inputStream = httpURLConnection.getInputStream();
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+            String read1;
+            while ((read1 = bufferedReader.readLine()) != null) {
+                strBuilder1.append(read1);
+            }
+            return null;
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return strBuilder1.toString();
+
     }
 
     @Override
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
     }
-    pre
+
 }
