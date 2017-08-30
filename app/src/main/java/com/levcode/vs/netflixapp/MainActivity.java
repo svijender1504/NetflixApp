@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        txtSearch=(EditText)findViewById(R.id.txtSearch);
+
 
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,4 +57,10 @@ class Search extends AsyncTask <String, String, String> {
     protected String doInBackground(String... strings) {
         return null;
     }
+
+    @Override
+    protected void onPostExecute(String s) {
+        super.onPostExecute(s);
+    }
+    pre
 }
