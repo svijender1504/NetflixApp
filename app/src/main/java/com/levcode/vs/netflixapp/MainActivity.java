@@ -138,10 +138,10 @@ public class MainActivity extends AppCompatActivity {
                         arrLst7.add(uposter);
 
                         Intent intent = new Intent(MainActivity.this, SearchActivity.class);
-                        intent.putStringArrayListExtra("aname", arrLst3);
-                        intent.putStringArrayListExtra("aprice", arrLst4);
-                        intent.putStringArrayListExtra("aimg_url", arrLst5);
-
+                        intent.putStringArrayListExtra("atitle", arrLst4);
+                        intent.putStringArrayListExtra("ayear", arrLst5);
+                        intent.putStringArrayListExtra("arating", arrLst6);
+                        intent.putStringArrayListExtra("aposter", arrLst7);
                         startActivity(intent);
 
 
