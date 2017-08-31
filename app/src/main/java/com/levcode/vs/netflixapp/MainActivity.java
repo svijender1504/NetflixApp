@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        btnSearch = (Button)findViewById(R.id.btnSearch);
 
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
                 url = new URL("http://netflixroulette.net/api/api.php?actor=Nicolas%20Cage");
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 InputStream inputStream = httpURLConnection.getInputStream();
-                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+//                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
                 String read1;
                 while ((read1 = bufferedReader.readLine()) != null) {
                     strBuilder1.append(read1);
@@ -106,9 +106,10 @@ public class MainActivity extends AppCompatActivity {
 
             JSONObject jsonObject = null;
             try {
-                jsonObject = new JSONObject(result);
-                jsonObj = jsonObject.getJSONObject("request_result");
-                jsonArray = jsonObj.getJSONArray("results");
+                 jsonObject = new JSONObject(result);
+              //  jsonObj = jsonObject.getJSONObject("request_result");
+               // jsonArray = jsonObj.getJSONArray("results");
+                jsonArray = jsonObject.getJSONArray(result);
                 n = jsonArray.length();
 
                 for (int i = 0; i < n; i++) {
